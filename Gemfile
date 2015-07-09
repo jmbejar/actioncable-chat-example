@@ -32,6 +32,8 @@ gem 'jbuilder', '~> 2.0'
 # gem 'capistrano-rails', group: :development
 
 gem 'devise'
+gem 'actioncable', github: 'rails/actioncable'
+gem 'puma'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
