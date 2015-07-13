@@ -4,8 +4,8 @@ gem 'rails', path: "/Users/jorge/Projects/OSS/rails"
 gem 'sprockets-rails', github: "rails/sprockets-rails"
 gem 'arel', github: "rails/arel"
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'pg'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
