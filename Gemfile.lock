@@ -1,8 +1,9 @@
 GIT
   remote: git://github.com/rails/actioncable.git
-  revision: 0426068e6b9c56dd4ffd38491025743be6cbef7b
+  revision: 56891644d6a2ce2059f557d8cae44aca6cdfaf45
   specs:
     actioncable (0.1.0)
+      actionpack (>= 4.2.0)
       activesupport (>= 4.2.0)
       celluloid (~> 0.16.0)
       em-hiredis (~> 0.3.0)
