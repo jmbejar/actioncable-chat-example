@@ -1,9 +1,11 @@
 class ChatChannel < ApplicationCable::Channel
   def subscribed
+    stop_all_streams
     stream_from "chat_activity"
   end
 
   def unsubscribed
+    stop_all_streams
   end
 
   def message(data)
