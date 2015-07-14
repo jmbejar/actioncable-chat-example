@@ -18,8 +18,5 @@ class ChatChannel < ApplicationCable::Channel
     }
 
     ActionCable.server.broadcast "chat_activity", broadcast_data
-  rescue Exception => ex
-    p ex
-    byebug
   end
 end

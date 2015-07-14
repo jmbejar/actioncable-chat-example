@@ -4,9 +4,6 @@ module ApplicationCable
 
     def connect
       self.current_user = find_verified_user
-    rescue Exception => ex
-      p ex
-      byebug
     end
 
     protected
