@@ -2,21 +2,24 @@
 #= require_self
 
 @App = {}
-App.cable = Cable.createConsumer "ws://localhost:28080"
 
-App.chat = App.cable.subscriptions.create "ChatChannel",
-  connected: ->
-    # Called once the subscription has been successfully completed
+$(document).on 'ready page:load', ->
+  if $('#chat_form').length > 0
+    App.cable = Cable.createConsumer "ws://localhost:28080"
 
-  sendMessage: (text) ->
-    @perform 'message', text: text
+    App.chat = App.cable.subscriptions.create "ChatChannel",
+      connected: ->
+        # Called once the subscription has been successfully completed
 
-  received: (data) ->
-    message = "<div class='message"
-    message += " my-message" if data.is_from_current_user
-    message += "'>" + data.name + ": " + data.text
-    message += "</div>"
-    $('.chat ').append message
+      sendMessage: (text) ->
+        @perform 'message', text: text
+
+      received: (data) ->
+        message = "<div class='message"
+        message += " my-message" if data.is_from_current_user
+        message += "'>" + data.name + ": " + data.text
+        message += "</div>"
+        $('.chat ').append message
 
 $(document).on 'submit', '#chat_form', ->
   text_field = $('#chat_form > input[name=message_text]')
