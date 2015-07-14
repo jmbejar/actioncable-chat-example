@@ -2,7 +2,7 @@
 
 <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 
-<div class="chat">
+<div class="chat" data-current-user-id="<%= current_user.id %>">
   <%= render partial: "message", collection: @messages %>
 </div>
 

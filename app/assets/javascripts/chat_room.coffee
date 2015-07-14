@@ -3,8 +3,16 @@
 
 @App = {}
 
+currentUserId = ->
+  $('.chat').data('current-user-id')
+
+highlightMyMessages = ->
+  $('.chat > .message').each ->
+    if $(this).data('user-id') == currentUserId()
+      $(this).addClass('my-message')
+
 $(document).on 'ready page:load', ->
-  if $('#chat_form').length > 0
+  if $('.chat').length > 0
     App.cable = Cable.createConsumer "ws://localhost:28080"
 
     App.chat = App.cable.subscriptions.create "ChatChannel",
@@ -14,12 +22,12 @@ $(document).on 'ready page:load', ->
       sendMessage: (text) ->
         @perform 'message', text: text
 
-      received: (data) ->
-        message = "<div class='message"
-        message += " my-message" if data.is_from_current_user
-        message += "'>" + data.name + ": " + data.text
-        message += "</div>"
+      received: (message) ->
         $('.chat ').append message
+        highlightMyMessages()
+
+    highlightMyMessages()
+
 
 $(document).on 'submit', '#chat_form', ->
   text_field = $('#chat_form > input[name=message_text]')
