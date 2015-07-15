@@ -13,7 +13,7 @@ highlightMyMessages = ->
 
 $(document).on 'ready page:load', ->
   if $('.chat').length > 0
-    App.cable = Cable.createConsumer "ws://localhost:28080"
+    App.cable = Cable.createConsumer "ws://localhost:3000"
 
     App.chat = App.cable.subscriptions.create "ChatChannel",
       connected: ->
