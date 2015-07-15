@@ -13,7 +13,7 @@ highlightMyMessages = ->
 
 $(document).on 'ready page:load', ->
   if $('.chat').length > 0
-    App.cable = Cable.createConsumer "ws://localhost:3000"
+    App.cable = Cable.createConsumer "ws://cholee-chat.herokuapp.com/"
 
     App.chat = App.cable.subscriptions.create "ChatChannel",
       connected: ->

@@ -5,3 +5,10 @@ development: &development
   :timeout: 1
   :inline: true
 test: *development
+production:
+  :url: redis://h:p5g4srlmjfbat9ea1edl67cni52@ec2-54-83-33-255.compute-1.amazonaws.com:10169
+  :host: ec2-54-83-33-255.compute-1.amazonaws.com
+  :port: 10169
+  :timeout: 1
+  :inline: true
+  :password: p5g4srlmjfbat9ea1edl67cni52
