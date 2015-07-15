@@ -15,5 +15,5 @@ test:
   database: chat_test
 
 production:
-  <<: *default
-  database: db/production.sqlite3
+  url:  <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV["DB_POOL"] || ENV['MAX_THREADS'] || 5 %>
