@@ -10,6 +10,7 @@ highlightMyMessages = ->
   $('.chat > .message').each ->
     if $(this).data('user-id') == currentUserId()
       $(this).addClass('my-message')
+  $('.chat').scrollTop $('.chat').prop('scrollHeight')
 
 $(document).on 'ready page:load', ->
   if $('.chat').length > 0
