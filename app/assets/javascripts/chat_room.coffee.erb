@@ -13,7 +13,7 @@ highlightMyMessages = ->
 
 $(document).on 'ready page:load', ->
   if $('.chat').length > 0
-    App.cable = Cable.createConsumer "ws://cholee-chat.herokuapp.com/"
+    App.cable = Cable.createConsumer "<%= Rails.application.config.web_socket_server_url %>"
 
     App.chat = App.cable.subscriptions.create "ChatChannel",
       connected: ->
