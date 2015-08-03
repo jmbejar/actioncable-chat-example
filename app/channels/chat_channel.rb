@@ -9,7 +9,11 @@ class ChatChannel < ApplicationCable::Channel
   end
 
   def message(data)
-    message = Message.create(text: data['text'], user: self.connection.current_user)
+    message = nil
+
+    ActiveRecord::Base.connection_pool.with_connection do |conn|
+      message = Message.create(text: data['text'], user: self.connection.current_user)
+    end
 
     ActionCable.server.broadcast "chat_activity", render_message_html(message)
   end
